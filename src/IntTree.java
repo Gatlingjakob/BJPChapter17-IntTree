@@ -123,16 +123,19 @@ public class IntTree {
 
     private int countLeftNodes(IntTreeNode node){
 
-        if (node == null) return 0;
+        if (node == null) {
+            return 0;
+        }
 
         int count = 0;
 
-        if (node.left!=null)
+        if (node.left!=null) {
             count += 1 + countLeftNodes(node.left);
+        }
 
-        if (node.right!=null)
+        if (node.right!=null) {
             count += countLeftNodes(node.right);
-
+        }
         return count;
     }
 
@@ -175,14 +178,12 @@ public class IntTree {
 
     private int depthSum(IntTreeNode node, int n) {
 
-        if (node == null)
-
+        if (node == null) {
             return 0;
-
-        else
-
-            return n * node.data + depthSum(node.left, n+1) + depthSum(node.right, n+1);
-
+        }
+        else {
+            return n * node.data + depthSum(node.left, n + 1) + depthSum(node.right, n + 1);
+        }
     }
 
     //CH17EX04//
@@ -228,11 +229,14 @@ public class IntTree {
     private void printLevel(int leftLevel, int rightLevel, int targetLevel, IntTreeNode someRoot) {
         if (someRoot == null) {
             //do nothing
-        } else if (leftLevel == targetLevel) {
+        }
+        else if (leftLevel == targetLevel) {
             System.out.println(someRoot.data);
-        } else if (rightLevel == targetLevel) {
+        }
+        else if (rightLevel == targetLevel) {
             System.out.println(someRoot.data);
-        } else {
+        }
+        else {
             leftLevel++;
             printLevel(leftLevel, rightLevel, targetLevel, someRoot.left);
             rightLevel++;
@@ -284,34 +288,6 @@ public class IntTree {
 
         else return false;
     }
-
-
-/*
-    public boolean isFull() {
-
-        return isFull(overallRoot);
-    }
-
-
-
-    private boolean isFull(IntTreeNode someNode) {
-
-        boolean result = true;
-
-        if (someNode == null) {
-            result = true;
-        }
-
-        //leaf base case
-        if ((someNode.left != null && someNode.right == null) ||
-                (someNode.left == null && someNode.right != null)) {
-            result = false;
-        }
-
-        return result;
-    }
-
-*/
 
     //CH17EX08//
 
